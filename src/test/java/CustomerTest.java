@@ -89,6 +89,39 @@ public class CustomerTest
 		
 	}
 	
+	@Test
+	public void whenWeCalculateOverQuotaPrice()
+	{
+		Customer c1 = new Customer();
+		ArrayList<Transfer> transfers = new ArrayList<Transfer>();
+		Transfer t1 = new Transfer("213.129.232.1", "213.129.226.2", "IPv4", 400);
+		Transfer t2 = new Transfer("213.129.232.1", "213.129.226.2", "IPv4", 600);
+		Transfer t3 = new Transfer("213.129.232.1", "213.129.226.2", "IPv4", 300);
+		Transfer t4 = new Transfer("213.129.232.1", "213.129.226.2", "IPv4", 1000);
+		Transfer t5 = new Transfer("213.129.232.1", "213.129.226.2", "IPv4", 2500);
+		Transfer t6 = new Transfer("2001:858:5:2c00::1", "2001:858:745::1", "IPv6", 2500);
+		transfers.add(t1);
+		transfers.add(t2);
+		transfers.add(t3);
+		transfers.add(t4);
+		transfers.add(t5);
+		transfers.add(t6);
+		c1.setTransfers(transfers);
+		ArrayList<Integer> quotas = new ArrayList<Integer>();
+		quotas.add(3000);
+		quotas.add(5000);
+		quotas.add(3000);
+		c1.setQuota(quotas);
+		assertThat(c1.calculateOverQuotaPrice(), is(1100));
+		quotas.add(3000);
+		c1.setQuota(quotas);
+		assertThat(c1.calculateOverQuotaPrice(), is(0));
+		// weighted value!
+	}
+	
+	
+	
+	
 	
 
 }
