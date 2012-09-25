@@ -14,6 +14,14 @@ public class Transfer
 		
 	}
 	
+	public Transfer(String sip, String tip, String protocol, Integer size)
+	{
+		setSip(sip);
+		setTip(tip);
+		setProtocol(protocol);
+		setSize(size);
+	}
+	
 	// getters
 
 	/**
