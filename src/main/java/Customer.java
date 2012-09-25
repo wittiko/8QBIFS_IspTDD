@@ -96,6 +96,29 @@ public class Customer
 		return res;
 	}
 
+	public Integer calculateQuotaPrice()
+	{
+		Integer res = new Integer(0);
+		int counter = 0;
+		while(counter < quota.size())
+		{
+			if(quota.get(counter) == 3000)
+			{
+				res += 50;
+			}
+			if(quota.get(counter) == 5000)
+			{
+				res += 100;
+			}
+			if(quota.get(counter) == 10000)
+			{
+				res += 150;
+			}
+			counter++;
+		}
+		
+		return res;
+	}
 
 		
 	
