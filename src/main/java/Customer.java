@@ -133,6 +133,11 @@ public class Customer
 		}
 		
 	}
+	
+	public Integer calculatePrice()
+	{
+		return calculateOverQuotaPrice() + calculateQuotaPrice();
+	}
 		
 	
 }
