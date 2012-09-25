@@ -72,6 +72,23 @@ public class CustomerTest
 		assertThat(c1.SumTransfers(), is(12100));
 	}
 	
+	@Test
+	public void whenWeCalculateQuotaPrice()
+	{
+		Customer c1 = new Customer();
+		// test without any quotas
+		assertThat(c1.calculateQuotaPrice(), is(0));
+		ArrayList<Integer> quotas = new ArrayList<Integer>();
+		quotas.add(3000);
+		quotas.add(5000);
+		quotas.add(3000);
+		quotas.add(10000);
+		c1.setQuota(quotas);
+		// test with some quotas
+		assertThat(c1.calculateQuotaPrice(), is(350));
+		
+	}
+	
 	
 
 }
