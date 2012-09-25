@@ -49,7 +49,28 @@ public class CustomerTest
 		assertThat(c1.SumQuotas(), is(21000));
 	}
 	
-	
+	@Test
+	public void whenWeCalculateTransfers()
+	{
+		Customer c1 = new Customer();
+		assertThat(c1.SumTransfers(), is(0));
+		ArrayList<Transfer> transfers = new ArrayList<Transfer>();
+		Transfer t1 = new Transfer("213.129.232.1", "213.129.226.2", "IPv4", 400);
+		Transfer t2 = new Transfer("213.129.232.1", "213.129.226.2", "IPv4", 600);
+		Transfer t3 = new Transfer("213.129.232.1", "213.129.226.2", "IPv4", 300);
+		Transfer t4 = new Transfer("213.129.232.1", "213.129.226.2", "IPv4", 1000);
+		Transfer t5 = new Transfer("213.129.232.1", "213.129.226.2", "IPv4", 2500);
+		Transfer t6 = new Transfer("2001:858:5:2c00::1", "2001:858:745::1", "IPv6", 2500);
+		transfers.add(t1);
+		transfers.add(t2);
+		transfers.add(t3);
+		transfers.add(t4);
+		transfers.add(t5);
+		transfers.add(t6);
+		c1.setTransfers(transfers);
+		// weighted value!
+		assertThat(c1.SumTransfers(), is(12100));
+	}
 	
 	
 
