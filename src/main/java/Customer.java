@@ -120,6 +120,19 @@ public class Customer
 		return res;
 	}
 
+	public Integer calculateOverQuotaPrice()
+	{
+		Integer res = SumTransfers() - SumQuotas();  
+		if(res > 0)
+		{
+			return res; // 5000transfers, 3000quotas --> 2000GB --> 2000€ Kosten
+		}
+		else
+		{
+			return 0;	// 3000 transfers , 5000 quotas --> -2000GB --> 0 Kosten
+		}
+		
+	}
 		
 	
 }
