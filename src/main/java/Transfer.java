@@ -4,7 +4,8 @@ import java.net.UnknownHostException;
 
 public class Transfer 
 {
-	
+	private String sip;
+	private String tip;
 	private String protocol;
 	private Integer size;
 	
@@ -26,6 +27,19 @@ public class Transfer
 	 */
 	public Integer getSize() {
 		return size;
+	}
+	
+	/**
+	 * @return the sip
+	 */
+	public String getSip() {
+		return sip;
+	}
+	/**
+	 * @return the tip
+	 */
+	public String getTip() {
+		return tip;
 	}
 	
 	// setters
@@ -71,6 +85,57 @@ public class Transfer
 		else
 		{
 			throw new NullPointerException("NULL @ setSize()");
+		}
+		
+	}
+	
+	/**
+	 * @param sip the sip to set
+	 */
+	public void setSip(String sip) 
+	{
+		try 
+		{
+			InetAddress tmp = InetAddress.getByName(sip);
+			if(tmp != null)
+			{
+				this.sip = sip;
+			}
+			else
+			{
+				this.sip = "0.0.0.0";
+			}
+			
+		}
+		catch (UnknownHostException e) 
+		{
+			// TODO Auto-generated catch block
+			throw new IllegalArgumentException("The parameter is no valid IP Address!");
+		}
+		
+	}
+	/**
+	 * @param tip the tip to set
+	 */
+	public void setTip(String tip) 
+	{
+		try 
+		{
+			InetAddress tmp = InetAddress.getByName(tip);
+			if(tmp != null)
+			{
+				this.tip = tip;
+			}
+			else
+			{
+				this.tip = "0.0.0.0";
+			}
+				
+		}
+		catch (UnknownHostException e) 
+		{
+			throw new IllegalArgumentException("The parameter is no valid IP Address!");
+			
 		}
 		
 	}
