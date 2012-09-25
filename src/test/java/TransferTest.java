@@ -32,6 +32,36 @@ public class TransferTest
 		assertThat(t1.calculateWeightedSize(), is(250));
 	}
 	
+	@Test
+	public void whenWeTryToSetAnInvalidProtocoll()
+	{
+		Transfer t1 = new Transfer();
+		thrown.expect(IllegalArgumentException.class);
+		t1.setProtocol("ipx");
+		thrown.expect(NullPointerException.class);
+		t1.setProtocol(null);
+		
+	}
+	
+	@Test
+	public void whenWeTryToSetAInvalidSize()
+	{
+		Transfer t1 = new Transfer();
+		thrown.expect(NullPointerException.class);
+		t1.setSize(null);
+		thrown.expect(IllegalArgumentException.class);
+		t1.setSize(-3);
+		t1.setSize(0);
+	}
+	
+	@Test
+	public void whenWeTryToSetAValidSize()
+	{
+		Transfer t1 = new Transfer();
+		t1.setSize(250);
+		assertThat(t1.getSize(), is(250));
+	}
+	
 	
 	
 	
