@@ -83,6 +83,18 @@ public class Customer
 		}
 		return res;
 	}
+	
+	public Integer SumTransfers()
+	{
+		Integer res = new Integer(0);
+		int count = 0;
+		while(count < transfers.size())
+		{
+			res += transfers.get(count).calculateWeightedSize();
+			count++;
+		}
+		return res;
+	}
 
 
 		
